@@ -25,7 +25,7 @@ SECRET_KEY = 'ipv*#u_w!=wq6s$qi0vast_3kc7(fwj5$8md-24^4mv(oove06'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['18.221.148.126']
 
 
 # Application definition
