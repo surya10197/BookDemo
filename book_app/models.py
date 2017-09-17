@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from django.utils import timezone
 from django.db import models
 import datetime
 
 # Create your models here.
 class Book(models.Model):
-    currentTime = datetime.datetime.utcnow()
+    currentTime = timezone.now()
     name = models.CharField(max_length=100, verbose_name="Book  Name", unique=True)
     author = models.CharField(max_length=100, verbose_name="Book Author")
     content = models.CharField(verbose_name="Book Content", max_length=1000)

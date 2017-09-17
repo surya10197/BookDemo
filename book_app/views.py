@@ -6,9 +6,10 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import status
 import datetime
+from django.utils import timezone
 from .serializers import BookSerializer
 from .models import Book
-import pytz
+#import pytz
 from rest_framework.settings import api_settings
 
 # Create your views here.
@@ -21,7 +22,7 @@ class BookView(viewsets.ModelViewSet):
     def retrive(self, request, *args, **kwargs):
         
         requestBook = self.get_object()
-        urlRequestTime = pytz.utc.localize(datetime.datetime.utcnow())
+        urlRequestTime = timezone.now()
 
         if urlRequestTime > requestBook.expiry:
             return Response(status=status.HTTP_404_NOT_FOUND)
