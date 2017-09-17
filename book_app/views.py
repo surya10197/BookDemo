@@ -21,7 +21,7 @@ class BookView(viewsets.ModelViewSet):
     def retrive(self, request, *args, **kwargs):
         
         requestBook = self.get_object()
-        urlRequestTime = pytz.utc.localize(datetime.datetime.utcnow())
+        urlRequestTime = datetime.datetime.utcnow()
 
         if urlRequestTime > requestBook.expiry:
             return Response(status=status.HTTP_404_NOT_FOUND)
