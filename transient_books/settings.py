@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ipv*#u_w!=wq6s$qi0vast_3kc7(fwj5$8md-24^4mv(oove06'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['18.221.148.126','127.0.0.1','*']
 
