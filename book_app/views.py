@@ -5,8 +5,8 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import status
-import datetime
-from django.utils import timezone
+from datetime import datetime, timedelta
+#from django.utils import timezone
 from .serializers import BookSerializer
 from .models import Book
 #import pytz
@@ -22,12 +22,15 @@ class BookView(viewsets.ModelViewSet):
     def retrive(self, request, *args, **kwargs):
         
         requestBook = self.get_object()
-        urlRequestTime = timezone.now()
-
-        if urlRequestTime > requestBook.expiry:
+        urlRequestTime = datetime.now()
+        #print urlRequestTime
+        #print requestBook.expiry
+        
+        if (urlRequestTime - requestBook.created)>timedelta(seconds = 60):
             return Response(status=status.HTTP_404_NOT_FOUND)
         else:
-            requestBook.expiry = urlRequestTime + datetime.timedelta(seconds=60)
+            #requestBook.expiry = urlRequestTime + timedelta(seconds=60)
+            requestBook.created = urlRequestTime
             requestBook.save()
             serializer = BookSerializer(requestBook)
             if serializer.data:
